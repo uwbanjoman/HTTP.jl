@@ -453,7 +453,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "HTTP.Messages.Request",
     "category": "Type",
-    "text": "Request <: Message\n\nRepresents a HTTP Request Message.\n\nmethod::String  RFC7230 3.1.1\ntarget::String  RFC7230 5.3\nversion::VersionNumber  RFC7230 2.6\nheaders::Vector{Pair{String,String}}  RFC7230 3.2\nbody::Vector{UInt8}  RFC7230 3.3\nresponse, the Response to this Request\nparent, the Response (if any) that led to this request (e.g. in the case of a redirect).  RFC7230 6.4\n\n\n\n"
+    "text": "Request <: Message\n\nRepresents a HTTP Request Message.\n\nmethod::String  RFC7230 3.1.1\ntarget::String  RFC7230 5.3\nversion::VersionNumber  RFC7230 2.6\nheaders::Vector{Pair{String,String}}  RFC7230 3.2\nbody::Vector{UInt8}  RFC7230 3.3\nresponse, the Response to this Request\ntxcount, number of times this Request has been sent (see RetryRequest.jl).\nparent, the Response (if any) that led to this request (e.g. in the case of a redirect).  RFC7230 6.4\n\n\n\n"
 },
 
 {
