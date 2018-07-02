@@ -101,7 +101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "HTTP.Servers.listen",
     "category": "function",
-    "text": "HTTP.listen([host=\"localhost\" [, port=8081]]; <keyword arguments>) do http\n    ...\nend\n\nListen for HTTP connections and execute the do function for each request.\n\nOptional keyword arguments:\n\nssl::Bool = false, use https.\nrequire_ssl_verification = true, pass MBEDTLS_SSL_VERIFY_REQUIRED to the mbed TLS library. \"... peer must present a valid certificate, handshake is aborted if   verification failed.\"\nsslconfig = SSLConfig(require_ssl_verification)\npipeline_limit = 16, number of concurrent requests per connection.\nreuse_limit = nolimit, number of times a connection is allowed to be reused                          after the first request.\ntcpisvalid::Function (::TCPSocket) -> Bool, check accepted connection before  processing requests. e.g. to implement source IP filtering, rate-limiting,  etc.\ntcpref::Ref{Sockets.TCPServer}, this reference is set to the underlying                                Sockets.TCPServer. e.g. to allow closing the server.\n\ne.g.\n\n    HTTP.listen() do http::HTTP.Stream\n        @show http.message\n        @show HTTP.header(http, \"Content-Type\")\n        while !eof(http)\n            println(\"body data: \", String(readavailable(http)))\n        end\n        setstatus(http, 404)\n        setheader(http, \"Foo-Header\" => \"bar\")\n        startwrite(http)\n        write(http, \"response body\")\n        write(http, \"more response body\")\n    end\n\n    HTTP.listen() do request::HTTP.Request\n        @show HTTP.header(request, \"Content-Type\")\n        @show HTTP.payload(request)\n        return HTTP.Response(404)\n    end\n\n\n\n"
+    "text": "HTTP.listen([host=Sockets.localhost[, port=8081]]; <keyword arguments>) do http\n    ...\nend\n\nListen for HTTP connections and execute the do function for each request.\n\nOptional keyword arguments:\n\nssl::Bool = false, use https.\nrequire_ssl_verification = true, pass MBEDTLS_SSL_VERIFY_REQUIRED to the mbed TLS library. \"... peer must present a valid certificate, handshake is aborted if   verification failed.\"\nsslconfig = SSLConfig(require_ssl_verification)\npipeline_limit = 16, number of concurrent requests per connection.\nreuse_limit = nolimit, number of times a connection is allowed to be reused                          after the first request.\ntcpisvalid::Function (::TCPSocket) -> Bool, check accepted connection before  processing requests. e.g. to implement source IP filtering, rate-limiting,  etc.\ntcpref::Ref{Base.IOServer}, this reference is set to the underlying                               IOServer. e.g. to allow closing the server.\n\ne.g.\n\n    HTTP.listen() do http::HTTP.Stream\n        @show http.message\n        @show HTTP.header(http, \"Content-Type\")\n        while !eof(http)\n            println(\"body data: \", String(readavailable(http)))\n        end\n        setstatus(http, 404)\n        setheader(http, \"Foo-Header\" => \"bar\")\n        startwrite(http)\n        write(http, \"response body\")\n        write(http, \"more response body\")\n    end\n\n    HTTP.listen() do request::HTTP.Request\n        @show HTTP.header(request, \"Content-Type\")\n        @show HTTP.payload(request)\n        return HTTP.Response(404)\n    end\n\n\n\n"
 },
 
 {
@@ -109,7 +109,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "HTTP.Servers.serve",
     "category": "function",
-    "text": "HTTP.serve([server,] host::IPAddr, port::Int; verbose::Bool=true, kwargs...)\n\nStart a server listening on the provided host and port. verbose indicates whether server activity should be logged. Optional keyword arguments allow construction of Server on the fly if the server argument isn\'t provided directly. See ?HTTP.Server for more details on server construction and supported keyword arguments. By default, HTTP.serve aims to \"never die\", catching and recovering from all internal errors. Two methods for stopping HTTP.serve include interrupting (ctrl/cmd+c) if blocking on the main task, or sending the kill signal via the server\'s in channel (put!(server.in, HTTP.Servers.KILL)).\n\n\n\n"
+    "text": "HTTP.serve([server,] host::Union{IPAddr, String}, port::Integer; verbose::Bool=true, kwargs...)\nHTTP.serve([server,] host::InetAddr; verbose::Bool=true, kwargs...)\nHTTP.serve([server,] host::String; verbose::Bool=true, kwargs...)\n\nStart a server listening on the provided host:port. verbose indicates whether server activity should be logged. Optional keyword arguments allow construction of Server on the fly if the server argument isn\'t provided directly. See ?HTTP.Server for more details on server construction and supported keyword arguments. By default, HTTP.serve aims to \"never die\", catching and recovering from all internal errors. Two methods for stopping HTTP.serve include interrupting (ctrl/cmd+c) if blocking on the main task, or sending the kill signal via the server\'s in channel (put!(server.in, HTTP.Servers.KILL)).\n\n\n\n"
 },
 
 {
@@ -553,6 +553,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "index.html#HTTP.MessageRequest.setuseragent!",
+    "page": "Home",
+    "title": "HTTP.MessageRequest.setuseragent!",
+    "category": "function",
+    "text": "Set the default User-Agent string to be used in each HTTP request; when set, can be manually overridden by passing in an explicit User-Agent header\n\n\n\n"
+},
+
+{
     "location": "index.html#HTTP.Messages.readchunksize",
     "page": "Home",
     "title": "HTTP.Messages.readchunksize",
@@ -597,7 +605,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Messages Interface",
     "category": "section",
-    "text": "HTTP.Messages.Request\nHTTP.Messages.Response\nHTTP.Messages.iserror\nHTTP.Messages.isredirect\nHTTP.Messages.ischunked\nHTTP.Messages.issafe\nHTTP.Messages.isidempotent\nHTTP.Messages.header\nHTTP.Messages.hasheader\nHTTP.Messages.setheader\nHTTP.Messages.defaultheader\nHTTP.Messages.appendheader\nHTTP.Messages.readheaders\nHTTP.Messages.readchunksize\nHTTP.Messages.headerscomplete(::HTTP.Messages.Response)\nHTTP.Messages.writestartline\nHTTP.Messages.writeheaders\nBase.write(::IO,::HTTP.Messages.Message)"
+    "text": "HTTP.Messages.Request\nHTTP.Messages.Response\nHTTP.Messages.iserror\nHTTP.Messages.isredirect\nHTTP.Messages.ischunked\nHTTP.Messages.issafe\nHTTP.Messages.isidempotent\nHTTP.Messages.header\nHTTP.Messages.hasheader\nHTTP.Messages.setheader\nHTTP.Messages.defaultheader\nHTTP.Messages.appendheader\nHTTP.Messages.readheaders\nHTTP.MessageRequest.setuseragent!\nHTTP.Messages.readchunksize\nHTTP.Messages.headerscomplete(::HTTP.Messages.Response)\nHTTP.Messages.writestartline\nHTTP.Messages.writeheaders\nBase.write(::IO,::HTTP.Messages.Message)"
 },
 
 {
