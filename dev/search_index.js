@@ -481,62 +481,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "internal_interface/#HTTP.Parsers.find_end_of_header",
-    "page": "Internal Interfaces",
-    "title": "HTTP.Parsers.find_end_of_header",
-    "category": "function",
-    "text": "find_end_of_header(bytes) -> length or 0\n\nFind length of header delimited by \\r\\n\\r\\n or \\n\\n.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.Parsers.find_end_of_line",
-    "page": "Internal Interfaces",
-    "title": "HTTP.Parsers.find_end_of_line",
-    "category": "function",
-    "text": "Find \\n in bytes\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.Parsers.find_end_of_trailer",
-    "page": "Internal Interfaces",
-    "title": "HTTP.Parsers.find_end_of_trailer",
-    "category": "function",
-    "text": "find_end_of_trailer(bytes) -> length or 0\n\nFind length of trailer delimited by \\r\\n\\r\\n (or starting with \\r\\n). RFC7230 4.1\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.Parsers.parse_status_line!",
-    "page": "Internal Interfaces",
-    "title": "HTTP.Parsers.parse_status_line!",
-    "category": "function",
-    "text": "Parse HTTP response-line bytes and set the status and version fields of response. Return a SubString containing the header-field lines.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.Parsers.parse_request_line!",
-    "page": "Internal Interfaces",
-    "title": "HTTP.Parsers.parse_request_line!",
-    "category": "function",
-    "text": "Parse HTTP request-line bytes and set the method, target and version fields of request. Return a SubString containing the header-field lines.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.Parsers.parse_header_field",
-    "page": "Internal Interfaces",
-    "title": "HTTP.Parsers.parse_header_field",
-    "category": "function",
-    "text": "Parse HTTP header-field. Return Pair(field-name => field-value) and a SubString containing the remaining header-field lines.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.Parsers.parse_chunk_size",
-    "page": "Internal Interfaces",
-    "title": "HTTP.Parsers.parse_chunk_size",
-    "category": "function",
-    "text": "Parse HTTP chunk-size. Return number of bytes of chunk-data.\n\nchunk-size = 1*HEXDIG\n\nRFC7230 4.1\n\n\n\n\n\n"
-},
-
-{
     "location": "internal_interface/#Parser-Interface-1",
     "page": "Internal Interfaces",
     "title": "Parser Interface",
@@ -705,38 +649,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "internal_interface/#HTTP.IOExtras",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras",
-    "category": "module",
-    "text": "This module defines extensions to the Base.IO interface to support:\n\nan unread! function for pushing excess bytes back into a stream,\nstartwrite, closewrite, startread and closeread for streams  with transactional semantics.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.unread!",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.unread!",
-    "category": "function",
-    "text": "unread!(::Transaction, bytes)\n\nPush bytes back into a connection\'s excess buffer (to be returned by the next read).\n\n\n\n\n\nunread!(::IO, bytes)\n\nPush bytes back into a connection (to be returned by the next read).\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.startwrite-Tuple{IO}",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.startwrite",
-    "category": "method",
-    "text": "startwrite(::IO)\nclosewrite(::IO)\nstartread(::IO)\ncloseread(::IO)\n\nSignal start/end of write or read operations.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.isioerror",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.isioerror",
-    "category": "function",
-    "text": "isioerror(exception)\n\nIs exception caused by a possibly recoverable IO error.\n\n\n\n\n\n"
-},
-
-{
     "location": "internal_interface/#IOExtras-Interface-1",
     "page": "Internal Interfaces",
     "title": "IOExtras Interface",
@@ -766,78 +678,6 @@ var documenterSearchIndex = {"docs": [
     "title": "Streams Interface",
     "category": "section",
     "text": "HTTP.Streams.closebody\nHTTP.Streams.isaborted"
-},
-
-{
-    "location": "internal_interface/#HTTP.ConnectionPool.Connection",
-    "page": "Internal Interfaces",
-    "title": "HTTP.ConnectionPool.Connection",
-    "category": "type",
-    "text": "Connection{T <: IO}\n\nA TCPSocket or SSLContext connection to a HTTP host and port.\n\nFields:\n\nhost::String\nport::String, exactly as specified in the URI (i.e. may be empty).\npipeline_limit, number of requests to send before waiting for responses.\nidle_timeout, No. of sconds to maintain connection after last transaction.\npeerport, remote TCP port number (used for debug messages).\nlocalport, local TCP port number (used for debug messages).\nio::T, the TCPSocket or `SSLContext.\nexcess::ByteView, left over bytes read from the connection after  the end of a response message. These bytes are probably the start of the  next response message.\nsequence, number of most recent Transaction.\nwritecount, number of Messages that have been written.\nwritedone, signal that writecount was incremented.\nreadcount, number of Messages that have been read.\nreaddone, signal that readcount was incremented.\ntimestamp, time data was last recieved.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.ConnectionPool.Transaction",
-    "page": "Internal Interfaces",
-    "title": "HTTP.ConnectionPool.Transaction",
-    "category": "type",
-    "text": "A single pipelined HTTP Request/Response transaction`.\n\nFields:\n\nc, the shared Connection used for this Transaction.\nsequence::Int, identifies this Transaction among the others that share c.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.ConnectionPool.pool",
-    "page": "Internal Interfaces",
-    "title": "HTTP.ConnectionPool.pool",
-    "category": "constant",
-    "text": "The pool is a collection of open Connections.  The request function calls getconnection to retrieve a connection from the pool.  When the request function has written a Request Message it calls closewrite to signal that the Connection can be reused for writing (to send the next Request). When the request function has read the Response Message it calls closeread to signal that the Connection can be reused for reading.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.ConnectionPool.getconnection",
-    "page": "Internal Interfaces",
-    "title": "HTTP.ConnectionPool.getconnection",
-    "category": "function",
-    "text": "getconnection(type, host, port) -> Connection\n\nFind a reusable Connection in the pool, or create a new Connection if required.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.unread!-Tuple{HTTP.ConnectionPool.Transaction,SubArray{UInt8,1,Array{UInt8,1},Tuple{UnitRange{Int64}},true}}",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.unread!",
-    "category": "method",
-    "text": "unread!(::Transaction, bytes)\n\nPush bytes back into a connection\'s excess buffer (to be returned by the next read).\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.startwrite-Tuple{HTTP.ConnectionPool.Transaction}",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.startwrite",
-    "category": "method",
-    "text": "startwrite(::Transaction)\n\nWait for prior pending writes to complete.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.closewrite-Tuple{HTTP.ConnectionPool.Transaction}",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.closewrite",
-    "category": "method",
-    "text": "closewrite(::Transaction)\n\nSignal that an entire Request Message has been written to the Transaction.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.startread-Tuple{HTTP.ConnectionPool.Transaction}",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.startread",
-    "category": "method",
-    "text": "startread(::Transaction)\n\nWait for prior pending reads to complete.\n\n\n\n\n\n"
-},
-
-{
-    "location": "internal_interface/#HTTP.IOExtras.closeread-Tuple{HTTP.ConnectionPool.Transaction}",
-    "page": "Internal Interfaces",
-    "title": "HTTP.IOExtras.closeread",
-    "category": "method",
-    "text": "closeread(::Transaction)\n\nSignal that an entire Response Message has been read from the Transaction.\n\nIncrement readcount and wake up tasks waiting in startread.\n\n\n\n\n\n"
 },
 
 {
