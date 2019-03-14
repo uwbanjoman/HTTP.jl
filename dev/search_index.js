@@ -569,11 +569,11 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "internal_interface/#HTTP.Messages.defaultheader",
+    "location": "internal_interface/#HTTP.Messages.defaultheader!",
     "page": "Internal Interfaces",
-    "title": "HTTP.Messages.defaultheader",
+    "title": "HTTP.Messages.defaultheader!",
     "category": "function",
-    "text": "defaultheader(::Message, key => value)\n\nSet header value for key if it is not already set.\n\n\n\n\n\n"
+    "text": "defaultheader!(::Message, key => value)\n\nSet header value in message for key if it is not already set.\n\n\n\n\n\n"
 },
 
 {
@@ -645,7 +645,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Internal Interfaces",
     "title": "Messages Interface",
     "category": "section",
-    "text": "HTTP.Messages.Request\nHTTP.Messages.Response\nHTTP.Messages.iserror\nHTTP.Messages.isredirect\nHTTP.Messages.ischunked\nHTTP.Messages.issafe\nHTTP.Messages.isidempotent\nHTTP.Messages.header\nHTTP.Messages.hasheader\nHTTP.Messages.setheader\nHTTP.Messages.defaultheader\nHTTP.Messages.appendheader\nHTTP.Messages.readheaders\nHTTP.MessageRequest.setuseragent!\nHTTP.Messages.readchunksize\nHTTP.Messages.headerscomplete(::HTTP.Messages.Response)\nHTTP.Messages.writestartline\nHTTP.Messages.writeheaders\nBase.write(::IO,::HTTP.Messages.Message)"
+    "text": "HTTP.Messages.Request\nHTTP.Messages.Response\nHTTP.Messages.iserror\nHTTP.Messages.isredirect\nHTTP.Messages.ischunked\nHTTP.Messages.issafe\nHTTP.Messages.isidempotent\nHTTP.Messages.header\nHTTP.Messages.hasheader\nHTTP.Messages.setheader\nHTTP.Messages.defaultheader!\nHTTP.Messages.appendheader\nHTTP.Messages.readheaders\nHTTP.MessageRequest.setuseragent!\nHTTP.Messages.readchunksize\nHTTP.Messages.headerscomplete(::HTTP.Messages.Response)\nHTTP.Messages.writestartline\nHTTP.Messages.writeheaders\nBase.write(::IO,::HTTP.Messages.Message)"
 },
 
 {
