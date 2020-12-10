@@ -73,11 +73,11 @@ function getNextId()
     return id
 end
 
-#CORS headers that show what kinds of complex requests are allowed to API
+# CORS headers that show what kinds of complex requests are allowed to API
 headers = [
     &quot;Access-Control-Allow-Origin&quot; =&gt; &quot;*&quot;,
     &quot;Access-Control-Allow-Headers&quot; =&gt; &quot;*&quot;,
-    &quot;Access-Control-Allow-Methods&quot; =&gt; &quot;POST;GET;OPTIONS&quot;
+    &quot;Access-Control-Allow-Methods&quot; =&gt; &quot;POST, GET, OPTIONS&quot;
 ]
 
 #= 
@@ -145,7 +145,8 @@ HTTP.@register(ANIMAL_ROUTER, &quot;GET&quot;, &quot;/api/zoo/v1/users/*/animals
 HTTP.@register(ANIMAL_ROUTER, &quot;DELETE&quot;, &quot;/api/zoo/v1/users/*/animals/*&quot;, deleteAnimal)
 
 
-HTTP.serve(CorsHandler, ip&quot;127.0.0.1&quot;, 8080)</code></pre><h2 id="Readme-Examples"><a class="docs-heading-anchor" href="#Readme-Examples">Readme Examples</a><a id="Readme-Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Readme-Examples" title="Permalink"></a></h2><pre><code class="language-julia">#CLIENT
+HTTP.serve(CorsHandler, ip&quot;127.0.0.1&quot;, 8080)
+</code></pre><h2 id="Readme-Examples"><a class="docs-heading-anchor" href="#Readme-Examples">Readme Examples</a><a id="Readme-Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Readme-Examples" title="Permalink"></a></h2><pre><code class="language-julia">#CLIENT
 
 #HTTP.request sends a HTTP Request Message and returns a Response Message.
 
@@ -259,4 +260,4 @@ result = request(custom_stack, &quot;GET&quot;, &quot;https://httpbin.org/ip&quo
 # }
 # &quot;&quot;&quot;
 
- </code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../internal_interface/">« Internal Interfaces</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Wednesday 9 December 2020 19:08">Wednesday 9 December 2020</span>. Using Julia version 1.5.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ </code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../internal_interface/">« Internal Interfaces</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Thursday 10 December 2020 20:59">Thursday 10 December 2020</span>. Using Julia version 1.5.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
