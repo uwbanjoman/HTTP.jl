@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Examples · HTTP.jl</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">HTTP.jl</span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li><a class="tocitem" href="../public_interface/">Public Interface</a></li><li><a class="tocitem" href="../internal_architecture/">Internal Architecture</a></li><li><a class="tocitem" href="../internal_interface/">Internal Interfaces</a></li><li class="is-active"><a class="tocitem" href>Examples</a><ul class="internal"><li><a class="tocitem" href="#Simple-Server"><span>Simple Server</span></a></li><li><a class="tocitem" href="#Cors-Server"><span>Cors Server</span></a></li><li><a class="tocitem" href="#Session"><span>Session</span></a></li><li><a class="tocitem" href="#Readme-Examples"><span>Readme Examples</span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Examples</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Examples</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/JuliaWeb/HTTP.jl/blob/master/docs/src/examples.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Examples"><a class="docs-heading-anchor" href="#Examples">Examples</a><a id="Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Examples" title="Permalink"></a></h1><p>Some examples that may prove potentially useful for those using  <code>HTTP.jl</code>. The code for these examples can also be found on Github  in the <code>docs/examples</code> folder.</p><h2 id="Simple-Server"><a class="docs-heading-anchor" href="#Simple-Server">Simple Server</a><a id="Simple-Server-1"></a><a class="docs-heading-anchor-permalink" href="#Simple-Server" title="Permalink"></a></h2><p>A simple example of creating a server with HTTP.jl. It handles creating, deleting,  updating, and retrieving Animals from a dictionary through 4 different routes</p><pre><code class="language-julia">using HTTP
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Examples · HTTP.jl</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit">HTTP.jl</span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li><a class="tocitem" href="../public_interface/">Public Interface</a></li><li><a class="tocitem" href="../internal_architecture/">Internal Architecture</a></li><li><a class="tocitem" href="../internal_interface/">Internal Interfaces</a></li><li class="is-active"><a class="tocitem" href>Examples</a><ul class="internal"><li><a class="tocitem" href="#Simple-Server"><span>Simple Server</span></a></li><li><a class="tocitem" href="#Cors-Server"><span>Cors Server</span></a></li><li><a class="tocitem" href="#Server-Sent-Events"><span>Server Sent Events</span></a></li><li><a class="tocitem" href="#Session"><span>Session</span></a></li><li><a class="tocitem" href="#Readme-Examples"><span>Readme Examples</span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Examples</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Examples</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/JuliaWeb/HTTP.jl/blob/master/docs/src/examples.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Examples"><a class="docs-heading-anchor" href="#Examples">Examples</a><a id="Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Examples" title="Permalink"></a></h1><p>Some examples that may prove potentially useful for those using  <code>HTTP.jl</code>. The code for these examples can also be found on Github  in the <code>docs/examples</code> folder.</p><h2 id="Simple-Server"><a class="docs-heading-anchor" href="#Simple-Server">Simple Server</a><a id="Simple-Server-1"></a><a class="docs-heading-anchor-permalink" href="#Simple-Server" title="Permalink"></a></h2><p>A simple example of creating a server with HTTP.jl. It handles creating, deleting,  updating, and retrieving Animals from a dictionary through 4 different routes</p><pre><code class="language-julia">using HTTP
 
 # modified Animal struct to associate with specific user
 mutable struct Animal
@@ -146,6 +146,79 @@ HTTP.@register(ANIMAL_ROUTER, &quot;DELETE&quot;, &quot;/api/zoo/v1/users/*/anim
 
 
 HTTP.serve(CorsHandler, ip&quot;127.0.0.1&quot;, 8080)
+</code></pre><h2 id="Server-Sent-Events"><a class="docs-heading-anchor" href="#Server-Sent-Events">Server Sent Events</a><a id="Server-Sent-Events-1"></a><a class="docs-heading-anchor-permalink" href="#Server-Sent-Events" title="Permalink"></a></h2><p>Simple server that implements <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">server-sent events</a>, loosely following <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">this tutorial</a>.</p><h3 id="Example-client-code-(JS):"><a class="docs-heading-anchor" href="#Example-client-code-(JS):">Example client code (JS):</a><a id="Example-client-code-(JS):-1"></a><a class="docs-heading-anchor-permalink" href="#Example-client-code-(JS):" title="Permalink"></a></h3><pre><code class="language-http">&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Server-sent events demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h3&gt;Fetched items:&lt;/h3&gt;
+    &lt;ul id=&quot;list&quot;&gt;&lt;/ul&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    const evtSource = new EventSource(&quot;http://127.0.0.1:8080/api/events&quot;)
+    evtSource.onmessage = async function (event) {
+        const newElement = document.createElement(&quot;li&quot;);
+        const eventList = document.getElementById(&quot;list&quot;);
+        if (parseFloat(event.data) &gt; 0.5) {
+            const r = await fetch(&quot;http://127.0.0.1:8080/api/getItems&quot;)
+            if (r.ok) {
+                const body = await r.json()
+                newElement.textContent = body;
+                eventList.appendChild(newElement);
+            }
+        }
+    }
+    evtSource.addEventListener(&quot;ping&quot;, function(event) {
+        console.log(&#39;ping:&#39;, event.data)
+    });
+&lt;/script&gt;
+&lt;/html&gt;</code></pre><h3 id="Example-client-code-(Julia)"><a class="docs-heading-anchor" href="#Example-client-code-(Julia)">Example client code (Julia)</a><a id="Example-client-code-(Julia)-1"></a><a class="docs-heading-anchor-permalink" href="#Example-client-code-(Julia)" title="Permalink"></a></h3><pre><code class="language-julia">using HTTP, JSON
+
+HTTP.open(&quot;GET&quot;, &quot;http://127.0.0.1:8080/api/events&quot;) do io
+    while !eof(io)
+        println(String(readavailable(io)))
+    end
+end</code></pre><h3 id="Server-code:"><a class="docs-heading-anchor" href="#Server-code:">Server code:</a><a id="Server-code:-1"></a><a class="docs-heading-anchor-permalink" href="#Server-code:" title="Permalink"></a></h3><pre><code class="language-julia">using HTTP, JSON
+
+const ROUTER = HTTP.Router()
+
+function getItems(req::HTTP.Request)
+    headers = [
+        &quot;Access-Control-Allow-Origin&quot; =&gt; &quot;*&quot;,
+        &quot;Access-Control-Allow-Methods&quot; =&gt; &quot;GET, OPTIONS&quot;
+    ]
+    if HTTP.method(req) == &quot;OPTIONS&quot;
+        return HTTP.Response(200, headers)
+    end
+    return HTTP.Response(200, headers; body = JSON.json(rand(2)))
+end
+
+function events(stream::HTTP.Stream)
+    HTTP.setheader(stream, &quot;Access-Control-Allow-Origin&quot; =&gt; &quot;*&quot;)
+    HTTP.setheader(stream, &quot;Access-Control-Allow-Methods&quot; =&gt; &quot;GET, OPTIONS&quot;)
+    HTTP.setheader(stream, &quot;Content-Type&quot; =&gt; &quot;text/event-stream&quot;)
+
+    if HTTP.method(stream.message) == &quot;OPTIONS&quot;
+        return nothing
+    end
+
+    HTTP.setheader(stream, &quot;Content-Type&quot; =&gt; &quot;text/event-stream&quot;)
+    HTTP.setheader(stream, &quot;Cache-Control&quot; =&gt; &quot;no-cache&quot;)
+    while true
+        write(stream, &quot;event: ping\ndata: $(round(Int, time()))\n\n&quot;)
+        if rand(Bool)
+            write(stream, &quot;data: $(rand())\n\n&quot;)
+        end
+        sleep(1)
+    end
+    return nothing
+end
+
+HTTP.@register(ROUTER, &quot;GET&quot;, &quot;/api/getItems&quot;, getItems)
+HTTP.@register(ROUTER, &quot;/api/events&quot;, HTTP.Handlers.StreamHandlerFunction(events))
+
+HTTP.serve(ROUTER, &quot;127.0.0.1&quot;, 8080)
 </code></pre><h2 id="Session"><a class="docs-heading-anchor" href="#Session">Session</a><a id="Session-1"></a><a class="docs-heading-anchor-permalink" href="#Session" title="Permalink"></a></h2><p>A simple example of creating a persistent session and logging into a web form. HTTP.jl does not have a distinct session object like requests.session() or rvest::html_session() but rather uses the <code>cookies</code> flag along with standard functions</p><pre><code class="language-julia">using HTTP
 
 #dummy site, any credentials work
@@ -271,4 +344,4 @@ result = request(custom_stack, &quot;GET&quot;, &quot;https://httpbin.org/ip&quo
 # }
 # &quot;&quot;&quot;
 
- </code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../internal_interface/">« Internal Interfaces</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Monday 3 May 2021 00:03">Monday 3 May 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ </code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../internal_interface/">« Internal Interfaces</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Thursday 6 May 2021 15:27">Thursday 6 May 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
