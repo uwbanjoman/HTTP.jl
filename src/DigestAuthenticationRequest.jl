@@ -1,4 +1,4 @@
-module DigestAuthenticationLayer
+module DigestAuthenticationRequest
 
 using .. Base64
 
@@ -38,4 +38,4 @@ function sign_digest!(algorithm::Any,
     )
 end
 
-end # module DigestAuthenticationLayer
+end # module DigestAuthenticationRequest
