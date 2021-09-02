@@ -30,4 +30,12 @@ function request(::Type{DigestAuthLayer{Next}},
     return request(Next, method, url, headers, body; kw...)
 end
 
+function sign_digest!(algorithm::Any,
+                    method::String,
+                    url::URI,
+                    headers::Headers,
+                    body::Vector{UInt8};
+    )
+end
+
 end # module DigestAuthenticationLayer
