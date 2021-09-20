@@ -2,7 +2,7 @@ module HTTP
 
 export startwrite, startread, closewrite, closeread, stack, insert, insert_default!,
     remove_default!, AWS4AuthLayer, BasicAuthLayer, CanonicalizeLayer, ConnectionPoolLayer,
-    ContentTypeDetectionLayer, DebugLayer, ExceptionLayer, MessageLayer, RedirectLayer,
+    ContentTypeDetectionLayer, DebugLayer, DigestAuthLayer, ExceptionLayer, MessageLayer, RedirectLayer,
     RetryLayer, StreamLayer, TimeoutLayer, TopLayer,
     @logfmt_str, common_logfmt, combined_logfmt
 
