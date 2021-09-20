@@ -69,8 +69,9 @@ end
         a = [JSON.parse(l) for l in split(chomp(String(bytes)), "\n")]
         totallen = length(bytes) # number of bytes to expect
 
-        io = Base.BufferStream()
+        io = IOBuffer()
         r = HTTP.get("$sch://httpbin.org/stream/100"; response_stream=io)
+        seekstart(io)
         @test status(r) == 200
 
         b = [JSON.parse(l) for l in eachline(io)]
@@ -177,7 +178,7 @@ end
     end
 end
 
-if haskey(ENV, "PIE_SOCKET_API_KEY")
+if !isempty(get(ENV, "PIE_SOCKET_API_KEY", ""))
     println("found pie socket api key, running websocket tests")
     pie_socket_api_key = ENV["PIE_SOCKET_API_KEY"]
     @testset "openraw client method - $socket_protocol" for socket_protocol in ["wss", "ws"]
